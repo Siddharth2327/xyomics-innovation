@@ -3,45 +3,7 @@ const Contact = () => {
       <section id="contact" className="bg-gradient-to-r from-purple-900 via-blue-800 to-purple-900 text-white py-20 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Stay in the Know</h2>
-              <p className="text-lg mb-8">
-                Subscribe to our newsletter for the latest updates, research insights, 
-                and industry news in biotechnology and animal science.
-              </p>
-              
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="email" className="block mb-2">Email *</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className="w-full bg-transparent border-b border-white py-2 px-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-300"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-                
-                <div className="flex items-start gap-2 mt-4">
-                  <input 
-                    type="checkbox" 
-                    id="subscribe" 
-                    className="mt-1"
-                    required
-                  />
-                  <label htmlFor="subscribe">
-                    Yes, subscribe me to your newsletter. *
-                  </label>
-                </div>
-                
-                <button 
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-full transition mt-4"
-                >
-                  Sign Up
-                </button>
-              </form>
-            </div>
+            
             
             <div className="flex flex-col justify-between">
               <div>
