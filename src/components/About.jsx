@@ -4,7 +4,10 @@ const About = () => {
   return (
     <section id="about" className="bg-black text-white py-20 px-6 md:px-16">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">About Us</h2>
+      <h2 className="text-4xl text-center md:text-5xl font-bold mb-4 text-white bg-clip-text ">
+            About
+          </h2>
+          <div className="w-14 h-1 bg-[#861FD2] mx-auto mb-6 rounded-full"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
@@ -12,7 +15,7 @@ const About = () => {
               Advancing Biotechnology, Animal Science, and Molecular Genetics
             </h3>
             <p className="text-lg mb-6">
-              At Xyomics innovations, we are dedicated to empowering industries with 
+              At Xyomics innovation, we are dedicated to empowering industries with 
               cutting-edge solutions in biotechnology, animal science, and molecular genetics. 
               We specialize in providing customized services to industries, helping them 
               leverage scientific advancements for growth and innovation.
@@ -24,7 +27,7 @@ const About = () => {
             </p>
             <Link 
               to="/about" 
-              className="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition"
+              className="text-[#66CC99] hover:text-[#861FD2] flex items-center gap-2 transition"
             >
               Learn more about us
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +36,7 @@ const About = () => {
             </Link>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-500 to-green-500 p-10 rounded-lg">
+          <div className="bg-gradient-to-r from-[#861FD2] to-[#66CC99]   p-10 rounded-lg">
             <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
