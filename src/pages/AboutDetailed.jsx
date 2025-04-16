@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const AboutDetailed = () => {
   const sectionRef = useRef(null);
@@ -7,6 +7,10 @@ const AboutDetailed = () => {
     triggerOnce: true, 
     margin: "0px 0px -100px 0px" // Revised margin for more consistent triggering
   });
+  //scroll to top on navigation
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[]);
 
   // Define variants for consistent animations
   const fadeIn = {
