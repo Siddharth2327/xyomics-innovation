@@ -163,7 +163,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div 
           ref={menuRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-t border-gray-800 shadow-lg transition-all duration-300 ease-in-out w-full z-50 py-4 px-4"
+          className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-t border-gray-800 shadow-lg transition-all duration-300 ease-in-out w-full z-50 py-4 px-4 mr-2"
         >
           <div className="flex flex-col space-y-4 w-full">
             <Link
@@ -187,7 +187,7 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
             </Link>
             <a
-              href="#services"
+              to="/"
               className="font-bold text-xl relative group transition
               hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
               hover:bg-clip-text hover:text-transparent py-2" 
@@ -197,7 +197,7 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
             </a>
             <a
-              href="#contact"
+              to="/"
               className="font-bold text-xl relative group transition
               hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
               hover:bg-clip-text hover:text-transparent py-2" 

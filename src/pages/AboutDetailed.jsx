@@ -106,7 +106,7 @@ const AboutDetailed = () => {
             },
             {
               name: "Mr. Avinash Shanmugasundaram, M.Sc.",
-              title: "Vice President and Head of Operations and Quality",
+              title: "VP and Head of Operations and Quality",
               tagline: "_Bridging Quality, Research, and Client Engagement_",
               expertise: "Quality Assurance, Medical Biochemistry, Client Relations",
               focus: "Operations Management, Compliance, Academic Support",
