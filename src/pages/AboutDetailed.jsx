@@ -190,7 +190,7 @@ const AboutDetailed = () => {
               <h3 className="font-bold text-2xl text-white mb-2">{paper.title}</h3>
               <p className="text-gray-400">{paper.journal}</p>
               <p className="text-gray-300"><strong>Author:</strong> {paper.author}</p>
-              <a href={`/public/assets/files/${paper.file}`} 
+              <a href={`/assets/files/${paper.file}`} 
               className="text-[#66CC99] hover:text-[#861FD2] font-bold"
               target="_blank" rel="noopener noreferrer">
                 Download Research Paper ↗
