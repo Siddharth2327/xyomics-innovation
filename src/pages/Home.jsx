@@ -1,22 +1,28 @@
-import Hero from '../components/Hero';
-import About from '../components/About';
-import MissionVision from '../components/MissionVision';
-import Services from '../components/Services';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from "react";
+import Hero from "../components/Hero";  // Remove lazy loading for Hero
+
+const About = lazy(() => import("../components/About"));
+const MissionVision = lazy(() => import("../components/MissionVision"));
+const Services = lazy(() => import("../components/Services"));
+const Contact = lazy(() => import("../components/Contact"));
+const Footer = lazy(() => import("../components/Footer"));
 
 const Home = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
-      <Hero />
-      <About />
-      <MissionVision />
-      <Services />
-      <Contact />
+      <Hero /> {/* Eagerly loaded */}
+      <main>
+        <Suspense fallback={<div className="text-center text-white p-6">Loading...</div>}>
+          <About />
+          <MissionVision />
+          <Services />
+          <Contact />
+        </Suspense>
+      </main>
       <Footer />
     </div>
   );

@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 
 const About = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { triggerOnce: true, margin: "-100px" });
+  
 
   return (
-    <section ref={sectionRef} id="about" className="bg-black text-white py-20 px-6 md:px-16">
+    <section ref={sectionRef} id="about"  role="region" aria-labelledby="about-title" className="bg-black text-white py-20 px-6 md:px-16">
       <div className="max-w-6xl mx-auto">
         {/* Heading with scale effect */}
         <motion.h2
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+          whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-4xl text-center md:text-5xl font-bold mb-4 text-white bg-clip-text"
         >
@@ -22,7 +22,7 @@ const About = () => {
         {/* Animated divider */}
         <motion.div
           initial={{ width: 0 }}
-          animate={isInView ? { width: "3.5rem" } : {}}
+          whileInView={{ width: "3.5rem" }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="w-14 h-1 bg-[#861FD2] mx-auto mb-6 rounded-full"
         ></motion.div>
@@ -31,7 +31,7 @@ const About = () => {
           {/* Left content with fade-in effect */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
@@ -47,9 +47,9 @@ const About = () => {
 
             {/* Animated link */}
             <motion.div whileHover={{ scale: 1.1 }}>
-              <Link to="/about" className="text-[#66CC99] hover:text-[#861FD2] flex items-center gap-2 transition">
+              <Link to="/about" aria-label="Learn more about Xyomics" className="text-[#66CC99] hover:text-[#861FD2] flex items-center gap-2 transition">
                 Learn more about us
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </Link>
@@ -59,7 +59,7 @@ const About = () => {
           {/* Right card with hover effect */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
             className="bg-gradient-to-r from-[#861FD2] to-[#66CC99] p-10 rounded-lg"
@@ -75,7 +75,7 @@ const About = () => {
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 * index, duration: 0.6 }}
                   className="flex items-start gap-3"
                 >

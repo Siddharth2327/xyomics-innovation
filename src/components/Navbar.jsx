@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
       ) {
         setIsMenuOpen(false);
       }
-    };
+    };  
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
@@ -72,23 +73,34 @@ const Navbar = () => {
   const handleSectionNavigation = () => {
     setIsMenuOpen(false);
   };
-
-  return (
-    <nav 
+return (
+    <motion.nav
       ref={navRef}
-      className={`bg-gradient-to-t from-transparent to-black/100 text-white fixed w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`bg-gradient-to-t from-transparent to-black/100 text-white fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? 'shadow-lg' : ''
+      }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex-shrink-0 pl-0">
-            <img src={logo} alt="Xyomics" className="h-16 sm:h-20 w-auto max-w-full" />
+            <motion.img
+              src={logo}
+              alt="Xyomics"
+              className="h-16 sm:h-20 w-auto max-w-full"
+              loading="lazy"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            />
           </Link>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white p-2 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             <svg
               className="w-6 h-6"
@@ -98,118 +110,80 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8 mr-2 lg:mr-6">
-            <Link
-              to="/"
-              className="font-bold text-lg lg:text-2xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2"
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </Link>
-            <Link
-              to="/about"
-              className="font-bold text-lg lg:text-2xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2"
-            >
-              About
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </Link>
-            <a
-              href="#services"
-              className="font-bold text-lg lg:text-2xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2"
-              onClick={handleSectionNavigation}
-            >
-              Services
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#contact"
-              className="font-bold text-lg lg:text-2xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2"
-              onClick={handleSectionNavigation}
-            >
-              Contact
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </a>
+            {['Home', 'About'].map((text) => (
+              <motion.div key={text} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                <Link
+                  to={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                  className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+                >
+                  {text}
+                  <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
+            ))}
+            {['Services', 'Contact'].map((text) => (
+              <motion.div key={text} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                <a
+                  href={`#${text.toLowerCase()}`}
+                  onClick={handleSectionNavigation}
+                  className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+                >
+                  {text}
+                  <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </a>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu - Positioned absolutely to ensure visibility */}
-      {isMenuOpen && (
-        <div 
-          ref={menuRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-t border-gray-800 shadow-lg transition-all duration-300 ease-in-out w-full z-50 py-4 px-4 mr-2"
-        >
-          <div className="flex flex-col space-y-4 w-full">
-            <Link
-              to="/"
-              className="font-bold text-xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2" 
-              onClick={handleSectionNavigation}
-            >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </Link>
-            <Link
-              to="/about"
-              className="font-bold text-xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2" 
-              onClick={handleSectionNavigation}
-            >
-              About
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </Link>
-            <a
-              to="/"
-              className="font-bold text-xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2" 
-              onClick={handleSectionNavigation}
-            >
-              Services
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </a>
-            <a
-              to="/"
-              className="font-bold text-xl relative group transition
-              hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] 
-              hover:bg-clip-text hover:text-transparent py-2" 
-              onClick={handleSectionNavigation}
-            >
-              Contact
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            ref={menuRef}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="md:hidden absolute top-full left-0 right-0 bg-black/95 border-t border-gray-800 shadow-lg transition-all duration-300 ease-in-out w-full z-50 py-4 px-4 mr-2"
+          >
+            <div className="flex flex-col space-y-4 w-full">
+              {['Home', 'About'].map((text) => (
+                <Link
+                  key={text}
+                  to={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                  onClick={handleSectionNavigation}
+                  className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+                >
+                  {text}
+                  <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+              ))}
+              {['Services', 'Contact'].map((text) => (
+                <a
+                  key={text}
+                  href={`#${text.toLowerCase()}`}
+                  onClick={handleSectionNavigation}
+                  className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+                >
+                  {text}
+                  <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
