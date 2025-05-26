@@ -8,6 +8,7 @@ import ProteinBiologyImage from '../assets/images/ModuleImages/ProteinBiology.jp
 import MolecularDockingImage from '../assets/images/ModuleImages/MolecularDocking.jpg';
 const TrainingModule = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [clickedCard, setClickedCard] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   // Sample training modules data
@@ -100,6 +101,10 @@ const TrainingModule = () => {
     }
   ];
 
+  const handleCardClick = (moduleId) => {
+    setClickedCard(clickedCard === moduleId ? null : moduleId);
+  };
+
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
@@ -175,6 +180,7 @@ const TrainingModule = () => {
                 variants={cardVariants}
                 onHoverStart={() => setHoveredCard(module.id)}
                 onHoverEnd={() => setHoveredCard(null)}
+                onClick={() => handleCardClick(module.id)}
                 whileHover={{ y: -8 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -199,7 +205,10 @@ const TrainingModule = () => {
                     <div className="flex items-center justify-between mb-2">
                       <h3 
                         className="text-xl font-bold text-[#66CC99] hover:text-white transition-colors cursor-pointer"
-                        onClick={() => window.open(module.pdfUrl, '_blank')}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(module.pdfUrl, '_blank');
+                        }}
                       >
                         {module.name}
                       </h3>
@@ -224,7 +233,7 @@ const TrainingModule = () => {
 
                   {/* Expanded Content */}
                   <AnimatePresence>
-                    {hoveredCard === module.id && (
+                    {(hoveredCard === module.id || clickedCard === module.id) && (
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-b from-[#861FD2]/95 to-[#66CC99]/95 backdrop-blur-sm rounded-2xl p-6 flex flex-col justify-center"
                         initial={{ opacity: 0 }}
@@ -240,6 +249,7 @@ const TrainingModule = () => {
                             className="w-full bg-white text-[#861FD2] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={(e) => e.stopPropagation()}
                           >
                             <span>Register Now</span>
                             <ExternalLink className="h-4 w-4" />
@@ -248,7 +258,10 @@ const TrainingModule = () => {
                           <motion.button
                             className="w-full border border-white/30 text-white font-semibold py-2 px-6 rounded-full hover:bg-white/10 transition-colors"
                             whileHover={{ scale: 1.05 }}
-                            onClick={() => window.open(module.pdfUrl, '_blank')}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              window.open(module.pdfUrl, '_blank');
+                            }}
                           >
                             View Curriculum
                           </motion.button>
