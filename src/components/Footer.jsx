@@ -10,9 +10,14 @@ const Footer = () => {
           <img src={textlogo} alt="Xyomics Logo" className="h-8 mb-2" />
           <p className="text-gray-400 mt-1 pl-2">Advancing Biotechnology & Molecular Genetics</p>
           </div>
-          
           <div className="text-center md:text-right">
           <p className="text-gray-400">© 2025 by Xyomics Innovation. All rights reserved.</p>
+          <p className="text-gray-400 py-2 text-xs">Webiste Designed by &nbsp; 
+            <a href='https://www.linkedin.com/in/siddharth-m-842880246/' target='blank' className='bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-transparent bg-clip-text font-bold text-[1rem]'>
+              Siddharth
+            </a>
+          </p>
+          
           </div>
         </div>
         </div>

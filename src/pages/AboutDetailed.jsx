@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
+
 const AboutDetailed = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
@@ -41,7 +42,7 @@ const AboutDetailed = () => {
   return (
     <div ref={sectionRef} className="pt-24 min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
-        
+    
         {/* Heading Animation */}
         <motion.h1 
           variants={fadeIn}
@@ -100,7 +101,7 @@ const AboutDetailed = () => {
                 "A pioneer in clinical diagnostics, Dr. Bhavanisree brings unmatched expertise in biochemistry and serology. As former HOD of Serology department, she specialized in infectious disease testing, immunofluorescence, and newborn screening.",
             },
             {
-              name: "Mr. Nandhakumar, M.Tech.",
+              name: "Mr. Nandhakumar Saravanan, M.Tech.",
               title: "Co-Founder & Director",
               tagline: "_Innovator in Genomics & Molecular Research_",
               expertise: "Genomics, Molecular Biology, Research Mentorship",

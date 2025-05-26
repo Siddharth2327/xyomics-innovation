@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import backdrop from "../assets/images/HeroSectionBackdrop.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -51,18 +52,22 @@ const Hero = () => {
           </motion.p>
 
           {/* Button Animation */}
-          <motion.a
-            href="#about"
-            aria-label="Learn more about Xomics"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className="bg-gradient-to-r from-[#861FD2] to-[#66CC99] animate-pulse hover:animate-none text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-medium inline-block transition"
+            className="inline-block"
           >
-            Discover More
-          </motion.a>
+            <Link
+              to="/training-modules"
+              aria-label="Our training modules"
+              className="bg-gradient-to-r from-[#861FD2] to-[#66CC99] animate-pulse hover:animate-none text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-medium inline-block transition"
+            >
+              Discover More
+            </Link>
+          </motion.div>
         </div>
       </div>
     </div>

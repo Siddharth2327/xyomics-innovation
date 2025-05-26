@@ -6,34 +6,41 @@ import logo from '../assets/logo.png';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isopportunitiesOpen, setIsopportunitiesOpen] = useState(false);
   const navRef = useRef(null);
   const menuRef = useRef(null);
+  const opportunitiesRef = useRef(null);
   const lastScrollY = useRef(0);
 
-  // Handle outside click to close menu
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        isMenuOpen && 
-        menuRef.current && 
+        isMenuOpen &&
+        menuRef.current &&
         !menuRef.current.contains(event.target) &&
-        navRef.current && 
+        navRef.current &&
         !navRef.current.contains(event.target)
       ) {
         setIsMenuOpen(false);
       }
-    };  
+
+      if (
+        isopportunitiesOpen &&
+        opportunitiesRef.current &&
+        !opportunitiesRef.current.contains(event.target)
+      ) {
+        setIsopportunitiesOpen(false);
+      }
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
-    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isopportunitiesOpen]);
 
-  // Close mobile menu when screen size changes to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
@@ -45,35 +52,40 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
-  // Handle scroll effect and close menu on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Close menu on scroll
+
       if (isMenuOpen && Math.abs(currentScrollY - lastScrollY.current) > 10) {
         setIsMenuOpen(false);
       }
-      
-      // Update scrolled state for navbar appearance
-      if (currentScrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+
+      if (isopportunitiesOpen && Math.abs(currentScrollY - lastScrollY.current) > 10) {
+        setIsopportunitiesOpen(false);
       }
-      
+
+      setScrolled(currentScrollY > 10);
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isopportunitiesOpen]);
 
-  // Close menu when clicking on anchor links (section navigation)
   const handleSectionNavigation = () => {
     setIsMenuOpen(false);
+    setIsopportunitiesOpen(false);
   };
-return (
+
+  const handleopportunitiesMouseEnter = () => {
+    setIsopportunitiesOpen(true);
+  };
+
+  const handleopportunitiesMouseLeave = () => {
+    setIsopportunitiesOpen(false);
+  };
+
+  return (
     <motion.nav
       ref={navRef}
       initial={{ y: -80, opacity: 0 }}
@@ -129,18 +141,73 @@ return (
                 </Link>
               </motion.div>
             ))}
-            {['Services', 'Contact'].map((text) => (
-              <motion.div key={text} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                <a
-                  href={`#${text.toLowerCase()}`}
-                  onClick={handleSectionNavigation}
-                  className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+
+            {/* opportunities with Dropdown */}
+            <motion.div
+              ref={opportunitiesRef}
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              onMouseEnter={handleopportunitiesMouseEnter}
+              onMouseLeave={handleopportunitiesMouseLeave}
+            >
+              <div
+                onClick={handleSectionNavigation}
+                className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 flex items-center"
+              >
+                Opportunities
+                <svg
+                  className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                    isopportunitiesOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  {text}
-                  <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-              </motion.div>
-            ))}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+              </div>
+
+              <AnimatePresence>
+                {isopportunitiesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-black/50 backdrop-blur-[10px] rounded-lg shadow-xl overflow-hidden"
+                  >
+                    <Link
+                      to="/training-modules"
+                      onClick={handleSectionNavigation}
+                      className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
+                    >
+                      Training Modules
+                    </Link>
+                    <Link
+                      to="/training-modules"
+                      onClick={handleSectionNavigation}
+                      className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
+                    >
+                      Careers
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+              <a
+                href="#contact"
+                onClick={handleSectionNavigation}
+                className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+              >
+                Contact
+                <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+              </a>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -168,17 +235,33 @@ return (
                   <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
                 </Link>
               ))}
-              {['Services', 'Contact'].map((text) => (
-                <a
-                  key={text}
-                  href={`#${text.toLowerCase()}`}
+
+              <div className="space-y-2">
+                <div
                   onClick={handleSectionNavigation}
-                  className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+                  className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block"
                 >
-                  {text}
+                  opportunities
                   <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-                </a>
-              ))}
+                </div>
+                <Link
+                  to="/training-modules"
+                  onClick={handleSectionNavigation}
+                  className="font-medium text-lg pl-4 relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block border-l-2 border-gray-600"
+                >
+                  Training Modules
+                  <span className="absolute left-4 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+              </div>
+
+              <a
+                href="#contact"
+                onClick={handleSectionNavigation}
+                className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
+              >
+                Contact
+                <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+              </a>
             </div>
           </motion.div>
         )}
