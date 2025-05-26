@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="text-center md:text-right">
           <p className="text-gray-400">© 2025 by Xyomics Innovation. All rights reserved.</p>
           <p className="text-gray-400 py-2 text-xs">Webiste Designed by &nbsp; 
-            <a href='https://www.linkedin.com/in/siddharth-m-842880246/' target='blank' className='bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-transparent bg-clip-text font-bold text-[1rem]'>
+            <a href='https://siddhu230.github.io/-Portfolio-website/' target='blank' className='bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-transparent bg-clip-text font-bold text-[1rem]'>
               Siddharth
             </a>
           </p>

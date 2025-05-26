@@ -186,7 +186,7 @@ const Navbar = () => {
                       Training Modules
                     </Link>
                     <Link
-                      to="/training-modules"
+                      to="/careers"
                       onClick={handleSectionNavigation}
                       className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
                     >
@@ -250,6 +250,14 @@ const Navbar = () => {
                   className="font-medium text-lg pl-4 relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block border-l-2 border-gray-600"
                 >
                   Training Modules
+                  <span className="absolute left-4 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+                <Link
+                  to="/careers"
+                  onClick={handleSectionNavigation}
+                  className="font-medium text-lg pl-4 relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block border-l-2 border-gray-600"
+                >
+                  Careers
                   <span className="absolute left-4 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
                 </Link>
               </div>

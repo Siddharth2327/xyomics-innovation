@@ -5,6 +5,7 @@ import { Suspense, lazy, useEffect } from 'react';
 const Home = lazy(()=> import("./pages/Home"));
 const AboutDetailed = lazy(()=> import("./pages/AboutDetailed"));
 const TrainingModule = lazy(()=> import("./pages/TrainingModule"));
+const Careers = lazy(()=> import("./pages/Careers"));
 
 // Setting Dynamic titles
 function usePageTitle(title){
@@ -28,6 +29,11 @@ function TrainingModulePage(){
   return <TrainingModule/>;
 }
 
+function CareersPage(){
+  usePageTitle("Careers | Xyomics Innovation");
+  return <Careers/>;
+}
+
 function App() {
   return (
     <Router>
@@ -37,6 +43,7 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/training-modules" element={<TrainingModulePage/>}/>
+        <Route path="/careers" element={<CareersPage/>} />
       </Routes>
       </main>
     </Router>
