@@ -7,9 +7,9 @@ import MolecularBiologyImage from '../assets/images/ModuleImages/MolecularBiolog
 import ProteinBiologyImage from '../assets/images/ModuleImages/ProteinBiology.jpg';
 import MolecularDockingImage from '../assets/images/ModuleImages/MolecularDocking.jpg';
 const TrainingModule = () => {
-  // useEffect(()=>{
-  //   scrollTo(0,0);//  Scroll to top on component mount
-  // })
+  useEffect(()=>{
+    scrollTo(0,0);//  Scroll to top on component mount
+  },[])
 
   // State to manage hovered and clicked cards
   const [hoveredCard, setHoveredCard] = useState(null);
