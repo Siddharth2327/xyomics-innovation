@@ -5,7 +5,7 @@ const About = lazy(() => import("../components/About"));
 const MissionVision = lazy(() => import("../components/MissionVision"));
 const Services = lazy(() => import("../components/Services"));
 const Contact = lazy(() => import("../components/Contact"));
-const Footer = lazy(() => import("../components/Footer"));
+// const Footer = lazy(() => import("../components/Footer"));
 
 const Home = () => {
   useEffect(() => {
@@ -23,7 +23,6 @@ const Home = () => {
           <Contact />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 };

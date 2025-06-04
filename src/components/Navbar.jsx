@@ -199,14 +199,14 @@ const Navbar = () => {
 
             {/* Contact */}
             <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={handleSectionNavigation}
                 className="font-bold text-lg lg:text-2xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2"
               >
                 Contact
                 <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>

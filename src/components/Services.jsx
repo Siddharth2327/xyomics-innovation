@@ -66,7 +66,7 @@ const Services = () => {
     if (isHovering) return;
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % services.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [services.length, isHovering]);

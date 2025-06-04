@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
 
 const Careers = () => {
+  useEffect(()=>{
+    scrollTo(0, 0); // Scroll to top on component mount 
+  })
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6">
       <motion.div 

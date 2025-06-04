@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Award, Users, Clock, ExternalLink, FileText } from 'lucide-react';
 import BioInformaticsImage from '../assets/images/ModuleImages/BioInformatics.jpg';
@@ -7,6 +7,11 @@ import MolecularBiologyImage from '../assets/images/ModuleImages/MolecularBiolog
 import ProteinBiologyImage from '../assets/images/ModuleImages/ProteinBiology.jpg';
 import MolecularDockingImage from '../assets/images/ModuleImages/MolecularDocking.jpg';
 const TrainingModule = () => {
+  // useEffect(()=>{
+  //   scrollTo(0,0);//  Scroll to top on component mount
+  // })
+
+  // State to manage hovered and clicked cards
   const [hoveredCard, setHoveredCard] = useState(null);
   const [clickedCard, setClickedCard] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -22,7 +27,7 @@ const TrainingModule = () => {
       duration: "5 days",
       students: "2.5k+",
       rating: 4.8,
-      pdfUrl: "/pdfs/react-fundamentals.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/bioinformatics.pdf"
     },
     {
       id: 2,
@@ -33,7 +38,7 @@ const TrainingModule = () => {
       duration: "5 days",
       students: "1.8k+",
       rating: 4.9,
-      pdfUrl: "/pdfs/advanced-javascript.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/MicroBiology.pdf"
     },
     {
       id: 3,
@@ -44,7 +49,7 @@ const TrainingModule = () => {
       duration: "5 days",
       students: "3.2k+",
       rating: 4.7,
-      pdfUrl: "/pdfs/fullstack-development.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/MolecularBiology.pdf"
     },
     {
       id: 4,
@@ -55,7 +60,7 @@ const TrainingModule = () => {
       duration: "6 days",
       students: "1.9k+",
       rating: 4.6,
-      pdfUrl: "/pdfs/ui-ux-design.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/ProteinBiology.pdf"
     },
     {
       id: 5,
@@ -66,7 +71,7 @@ const TrainingModule = () => {
       duration: "7 days",
       students: "2.1k+",
       rating: 4.8,
-      pdfUrl: "/pdfs/mobile-development.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/MolecularDocking.pdf"
     }
   ];
 
@@ -75,8 +80,8 @@ const TrainingModule = () => {
     {
       id: 1,
       name: "Dr.Debral",
-      role: "Senior Scientist",
-      company: "Tech Corp",
+      role: "Ph.D. Scholar",
+      company: "SRM University",
       rating: 5,
       text: "The hands-on learning approach and cutting-edge research opportunities at XYOMICS have transformed my academic journey. I feel empowered to innovate and make a real-world impact.",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
@@ -85,7 +90,7 @@ const TrainingModule = () => {
       id: 2,
       name: "Dr. Sowmiya Thiyagarajan",
       role: "Asst. Proffesor",
-      company: "xyz college",
+      company: "SRIHER",
       rating: 5,
       text: "What sets XYOMICS apart is its dedication to pioneering research and interdisciplinary collaboration. As an Assistant Professor, I have the opportunity to mentor aspiring researchers and contribute to transformative projects that address critical societal challenges.",
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
@@ -212,7 +217,7 @@ const TrainingModule = () => {
                       >
                         {module.name}
                       </h3>
-                      <FileText className="h-5 w-5 text-gray-400 hover:text-[#66CC99] transition-colors" />
+                      {/* add best seller, value for money tags here -- ask to them */}
                     </div>
                     
                     <div className="flex items-center space-x-4 text-sm text-gray-400">

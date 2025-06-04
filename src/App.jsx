@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Suspense, lazy, useEffect } from 'react';
+import Footer from './components/Footer';
 // lazy load for better performance
 const Home = lazy(()=> import("./pages/Home"));
 const AboutDetailed = lazy(()=> import("./pages/AboutDetailed"));
 const TrainingModule = lazy(()=> import("./pages/TrainingModule"));
 const Careers = lazy(()=> import("./pages/Careers"));
+const Contact = lazy(() => import("./pages/ContactDetailed"));
 
 // Setting Dynamic titles
 function usePageTitle(title){
@@ -34,6 +36,11 @@ function CareersPage(){
   return <Careers/>;
 }
 
+function ContactPage(){
+  usePageTitle("Contact | Xyomics Innovation");
+  return <Contact/>;
+}
+
 function App() {
   return (
     <Router>
@@ -44,8 +51,10 @@ function App() {
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/training-modules" element={<TrainingModulePage/>}/>
         <Route path="/careers" element={<CareersPage/>} />
+        <Route path="/contact" element={<ContactPage/>}/>
       </Routes>
       </main>
+      <Footer/>
     </Router>
   );
 }
