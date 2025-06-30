@@ -378,7 +378,7 @@ const ServicesPage = () => {
             >
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h2
-                        className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#861FD2] to-[#66CC99] bg-clip-text text-transparent"
+                        className="text-4xl p-2 md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#861FD2] to-[#66CC99] bg-clip-text text-transparent"
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -386,7 +386,7 @@ const ServicesPage = () => {
                         Ready to Start Your Project?
                     </motion.h2>
                     <motion.p
-                        className="text-xl text-gray-300 mb-8"
+                        className="text-xl text-gray-300 mb-8 "
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
