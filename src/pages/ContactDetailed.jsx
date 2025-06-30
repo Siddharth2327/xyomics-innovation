@@ -61,8 +61,8 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: "Our Location",
-      content: "Xyomics Innovation India pvt. ltd,\nHIG-24, 1st Main road, Eri scheme,\nMogappair West, Chennai-600037",
-      link: "https://www.google.com/maps/search/?api=1&query=Selsoft Tech Private Limited, 8, 24, Mogappair Eri Scheme, Mogappair East, Chennai, Tamil Nadu 600037",
+      content: "Xyomics Innovation India pvt. ltd,\nHIG-24, 1st Main road, Eri scheme,\nMogappair West, Chennai-600037.",
+      link: "https://maps.app.goo.gl/oBZrYjobvzdJQjmH6",
       isExternal: true
     },
     {
@@ -233,7 +233,9 @@ const ContactPage = () => {
                     Send Us a <span className="bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-transparent bg-clip-text">Message</span>
                   </h2>
                   <p className="text-gray-400">
-                    *Form currently unavailable. Please contact us via email or phone.
+                    *Form currently unavailable. Please contact us via &nbsp;
+                    <a href='mailto:xyomicsinnovations@gmail.com' className='font-bold hover:underline'>email</a> or &nbsp;
+                    <a href='tel:+919790756868' className='font-bold hover:underline'>phone</a>.
                   </p>
                 </div>
 
@@ -348,7 +350,7 @@ const ContactPage = () => {
           <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-4 overflow-hidden animate-scale-up hover:border-[#861FD2]/50 transition-all duration-300">
             <div className="aspect-video rounded-xl overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7185.778837210779!2d80.1755651416264!3d13.078173630326186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52630cf004e31d%3A0xa6d4faad64a58a80!2sSelsoft%20Tech%20Private%20Limited!5e0!3m2!1sen!2sin!4v1749023547202!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.3235772920784!2d80.17259767484332!3d13.07866758724664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52639bf18b7fed%3A0xf272f241b13a4112!2sXyomics%20Innovation!5e0!3m2!1sen!2sin!4v1749319603597!5m2!1sen!2sin" 
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

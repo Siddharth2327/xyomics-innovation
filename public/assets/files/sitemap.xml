@@ -10,8 +10,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- <url>
-    <loc>https://xyomics.in/services</loc>
+  <url>
+    <loc>https://xyomics.in/training-modules</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://xyomics.in/service</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -19,5 +24,5 @@
     <loc>https://xyomics.in/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url> -->
+  </url>
 </urlset>

@@ -91,9 +91,8 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`bg-gradient-to-t from-transparent to-black/100 text-white fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'shadow-lg' : ''
-      }`}
+      className={`bg-gradient-to-t from-transparent to-black/100 text-white fixed w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''
+        }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -157,9 +156,8 @@ const Navbar = () => {
               >
                 Opportunities
                 <svg
-                  className={`ml-1 w-4 h-4 transition-transform duration-200 ${
-                    isopportunitiesOpen ? 'rotate-180' : ''
-                  }`}
+                  className={`ml-1 w-4 h-4 transition-transform duration-200 ${isopportunitiesOpen ? 'rotate-180' : ''
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -178,6 +176,13 @@ const Navbar = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-black/50 backdrop-blur-[10px] rounded-lg shadow-xl overflow-hidden"
                   >
+                    <Link
+                      to="/service"
+                      onClick={handleSectionNavigation}
+                      className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
+                    >
+                      Services
+                    </Link>
                     <Link
                       to="/training-modules"
                       onClick={handleSectionNavigation}
@@ -241,7 +246,7 @@ const Navbar = () => {
                   onClick={handleSectionNavigation}
                   className="font-bold text-xl relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block"
                 >
-                  opportunities
+                  Opportunities
                   <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
                 </div>
                 <Link

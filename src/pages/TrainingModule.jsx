@@ -27,7 +27,7 @@ const TrainingModule = () => {
       duration: "5 days",
       students: "2.5k+",
       rating: 4.8,
-      pdfUrl: "/assets/files/ModuleFiles/bioinformatics.pdf"
+      pdfUrl: "/assets/files/ModuleFiles/BioInformatics.pdf"
     },
     {
       id: 2,
@@ -199,10 +199,10 @@ const TrainingModule = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     
-                    {/* Price Badge */}
+                    {/* Price Badge
                     <div className="absolute top-4 right-4 bg-[#861FD2] text-white px-3 py-1 rounded-full font-bold">
                       {module.price}
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Basic Info */}
@@ -225,14 +225,14 @@ const TrainingModule = () => {
                         <Clock className="h-4 w-4" />
                         <span>{module.duration}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
+                      {/* <div className="flex items-center space-x-1">
                         <Users className="h-4 w-4" />
                         <span>{module.students}</span>
                       </div>
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                         <span>{module.rating}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
