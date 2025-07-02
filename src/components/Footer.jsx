@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import textlogo from '../assets/TextLogo.png';
 
 const Footer = () => {
+  const [hoveredLink, setHoveredLink] = useState(null); 
+
   return (
     <footer className="bg-black text-white py-8 px-6 md:px-16 w-full">
       <div className="w-full mx-auto">
@@ -18,25 +21,62 @@ const Footer = () => {
               <h3 className="text-white font-semibold mb-4">Quick Links</h3>
               <div className="flex flex-row ">
                 <div className='flex flex-col space-y-2'>
-                  <Link to="/" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    Home
+                  <Link
+                    to="/"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('home')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'home' && <span className="text-xs">❯</span>}
+                    <span>Home</span>
                   </Link>
-                  <Link to="/about" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    About
+                  <Link
+                    to="/about"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('about')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'about' && <span className="text-xs">❯</span>}
+                    <span>About</span>
                   </Link>
-                  <Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    Contact
+                  <Link
+                    to="/contact"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('contact')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'contact' && <span className="text-xs">❯</span>}
+                    <span>Contact</span>
                   </Link>
                 </div>
-                <div className='flex flex-col space-y-2 ml-4'>
-                  <Link to="/service" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    Services
+                <div className='flex flex-col space-y-2 ml-20'>
+                  <Link
+                    to="/service"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('service')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'service' && <span className="text-xs">❯</span>}
+                    <span>Services</span>
                   </Link>
-                  <Link to="/training-modules" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    Training Modules
+                  <Link
+                    to="/training-modules"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('training')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'training' && <span className="text-xs">❯</span>}
+                    <span>Training Module</span>
                   </Link>
-                  <Link to="/careers" className="text-gray-400 hover:text-white transition-colors duration-300 w-fit">
-                    Careers
+
+                  <Link
+                    to="/careers"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 w-fit flex items-center space-x-1"
+                    onMouseEnter={() => setHoveredLink('careers')}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {hoveredLink === 'careers' && <span className="text-xs">❯</span>}
+                    <span>Careers</span>
                   </Link>
                 </div>
               </div>
