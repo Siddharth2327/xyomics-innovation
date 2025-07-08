@@ -99,7 +99,7 @@ const ContactPage = () => {
     {
       icon: Instagram,
       name: "Instagram",
-      link: "https://www.instagram.com/xyomics_official/",
+      link: "https://www.instagram.com/xyomics_official_/",
       color: "hover:bg-[#66CC99]"
     },
     {

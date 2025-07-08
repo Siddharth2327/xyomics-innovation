@@ -250,6 +250,14 @@ const Navbar = () => {
                   <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
                 </div>
                 <Link
+                  to="/service"
+                  onClick={handleSectionNavigation}
+                  className="font-medium text-lg pl-4 relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block border-l-2 border-gray-600"
+                >
+                  Services
+                  <span className="absolute left-4 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+                <Link
                   to="/training-modules"
                   onClick={handleSectionNavigation}
                   className="font-medium text-lg pl-4 relative group transition hover:bg-gradient-to-r hover:from-[#861FD2] hover:via-white hover:to-[#66CC99] hover:bg-clip-text hover:text-transparent py-2 block border-l-2 border-gray-600"
@@ -265,6 +273,7 @@ const Navbar = () => {
                   Careers
                   <span className="absolute left-4 bottom-0 w-0 h-1 bg-gradient-to-r from-[#861FD2] to-[#66CC99] transition-all duration-500 group-hover:w-full"></span>
                 </Link>
+
               </div>
 
               <Link

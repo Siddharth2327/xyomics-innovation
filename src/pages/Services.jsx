@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NBSBaby from '../assets/images/ServiceImages/NbsBaby.png';
+import metaGen from '../assets/images/ServiceImages/metagenomics.png'
+import ngs from '../assets/images/ServiceImages/Ngs.png'
+import micro from '../assets/images/ServiceImages/MicroBio.png'
 import {
     Clock,
     Users,
@@ -49,24 +52,36 @@ const ServicesPage = () => {
             name: "Microbiology",
             icon: Microscope,
             price: "Quote on Request",
-            image: "https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&h=300&fit=crop",
+            image: micro,
             description: "Comprehensive microbiology services including bacterial identification, antimicrobial testing, culture analysis, and contamination assessment with certified protocols.",
             duration: "2-5 weeks",
             projects: "120+",
             rating: 4.7,
-            RouteLink: "/service"
+            // RouteLink: "/service"
         },
         {
             id: 3,
             name: "Metagenomics",
-            icon: Dna,
+            icon: Brain,
             price: "Quote on Request",
-            image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop",
+            image: metaGen,
             description: "Tailored research solutions for unique projects including experimental design, data analysis, manuscript preparation, and collaborative research partnerships.",
             duration: "Variable",
             projects: "50+",
             rating: 5.0,
-            RouteLink: "/service"
+            // RouteLink: "/service"
+        },
+        {
+            id: 4,
+            name: "Next Generation Sequencing",
+            icon: Dna,
+            price: "Quote on Request",
+            image: ngs,
+            description: "Next-Generation Sequencing (NGS) is a high-throughput DNA sequencing technology that enables rapid sequencing of entire genomes, exomes, or targeted regions.",
+            duration: "Variable",
+            projects: "50+",
+            rating: 5.0,
+            // RouteLink: "/service"
         }
     ];
 
@@ -110,7 +125,8 @@ const ServicesPage = () => {
             navigate(clickedService.RouteLink);
         }
         else {
-            console.log("No routing for this service")
+            alert("Contact us for details")
+            navigate('/contact')
         }
     };
 

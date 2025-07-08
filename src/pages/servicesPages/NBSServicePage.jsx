@@ -29,7 +29,8 @@ const NBSServicePage = () => {
             disorders: "CAH, CH, G6PD",
             price: "₹900/-",
             tests: 3,
-            description: "Essential screening for the most common metabolic disorders"
+            description: "Essential screening for the most common metabolic disorders",
+            test: "Neonatal 17OH Progesterone, Neonatal TSH, Neonatal G6PD"
         },
         {
             name: "NBS 5",
@@ -37,6 +38,7 @@ const NBSServicePage = () => {
             price: "₹1500/-",
             tests: 5,
             description: "Comprehensive screening including metabolic disorders",
+            test: "Neonatal 17OH Progesterone, Neonatal TSH, Neonatal G6PD, Neonatal Galatose, Neonatal Phenylalanine"
 
         },
         {
@@ -45,7 +47,9 @@ const NBSServicePage = () => {
             price: "₹2100/-",
             tests: 7,
             description: "Complete screening panel for maximum protection",
-            popular: true
+            popular: true,
+            test: "Neonatal 17OH Progesterone, Neonatal TSH, Neonatal G6PD, Neonatal Galatose, Neonatal Phenylalanine, Neonatal Biotinidase, Neonatal IRT"
+
         }
     ];
 
@@ -136,8 +140,9 @@ const NBSServicePage = () => {
         const body = encodeURIComponent(
             `Hello,\n\nI would like to get a quote for the following panel:\n\n` +
             `Panel Name: ${panel.name}\n` +
+            `Test Covered: ${panel.test}\n` +
             `Disorders Covered: ${panel.disorders}\n` +
-            `Number of Tests: ${panel.tests}\n` +
+            // `Number of Tests: ${panel.tests}\n` +
             `Estimated Price: ${panel.price}\n\n` +
             `Regards,\n[Your Name]`
         );
@@ -218,17 +223,17 @@ const NBSServicePage = () => {
                                     className="w-full h-64 object-cover rounded-2xl mb-6"
                                 />
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="text-center">
+                                    {/* <div className="text-center">
                                         <div className="flex items-center justify-center space-x-2 mb-2">
                                             <Clock className="h-5 w-5 text-[#66CC99]" />
                                             <span className="text-[#66CC99] font-semibold">TAT</span>
                                         </div>
                                         <p className="text-white">2 Days</p>
-                                    </div>
+                                    </div> */}
                                     <div className="text-center">
                                         <div className="flex items-center justify-center space-x-2 mb-2">
                                             <Shield className="h-5 w-5 text-[#66CC99]" />
-                                            <span className="text-[#66CC99] font-semibold">Sample</span>
+                                            <span className="text-[#66CC99] font-semibold">Sample Type</span>
                                         </div>
                                         <p className="text-white">Dried Blood Spot</p>
                                     </div>
@@ -260,7 +265,9 @@ const NBSServicePage = () => {
                         {panels.map((panel, index) => (
                             <motion.div
                                 key={panel.name}
-                                className={`relative bg-gray-800 rounded-2xl p-6 border-2 transition-all duration-300 hover:border-[#66CC99] ${panel.popular ? 'border-[#861FD2] ring-2 ring-[#861FD2]/20' : 'border-gray-700'
+                                className={`relative bg-gray-800 rounded-2xl p-6 border-2 transition-all duration-300 hover:border-[#66CC99] ${panel.popular
+                                        ? 'border-[#861FD2] ring-2 ring-[#861FD2]/20'
+                                        : 'border-gray-700'
                                     }`}
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
@@ -284,15 +291,23 @@ const NBSServicePage = () => {
                                 <div className="mb-6">
                                     <p className="text-gray-300 text-sm mb-4">{panel.description}</p>
                                     <div className="bg-gray-700/50 rounded-lg p-4">
-                                        <h4 className="text-[#66CC99] font-semibold mb-2">Disorders Tested:</h4>
-                                        <p className="text-gray-300 text-sm">{panel.disorders}</p>
+                                        <h4 className="text-[#66CC99] font-semibold mb-2">Test Covered:</h4>
+                                        <ul className="text-gray-300 text-sm list-disc list-inside space-y-1">
+                                            {panel.test.split(',').map((test, i) => (
+                                                <li key={i}>
+                                                    {
+                                                        test
+                                                    }
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
 
                                 <motion.button
                                     className={`w-full py-3 px-6 rounded-full font-semibold transition-all ${panel.popular
-                                        ? 'bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-white hover:shadow-lg'
-                                        : 'border border-[#66CC99] text-[#66CC99] hover:bg-[#66CC99] hover:text-black'
+                                            ? 'bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-white hover:shadow-lg'
+                                            : 'border border-[#66CC99] text-[#66CC99] hover:bg-[#66CC99] hover:text-black'
                                         }`}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
@@ -305,6 +320,7 @@ const NBSServicePage = () => {
                     </div>
                 </div>
             </motion.section>
+
 
             {/* How It Works Section */}
             <motion.section
@@ -375,8 +391,8 @@ const NBSServicePage = () => {
                             <motion.div
                                 key={test.id}
                                 className={`bg-gray-800 rounded-lg p-6 border-2 transition-all cursor-pointer ${selectedTests.includes(test.id)
-                                        ? 'border-[#66CC99] bg-[#66CC99]/10'
-                                        : 'border-gray-700 hover:border-[#66CC99]/50'
+                                    ? 'border-[#66CC99] bg-[#66CC99]/10'
+                                    : 'border-gray-700 hover:border-[#66CC99]/50'
                                     }`}
                                 initial={{ x: -50, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
