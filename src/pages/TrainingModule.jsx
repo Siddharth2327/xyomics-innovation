@@ -379,42 +379,38 @@ const TrainingModule = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-center space-x-4 mt-8">
-              <motion.button
-                onClick={prevTestimonial}
-                className="bg-[#861FD2] hover:bg-[#861FD2]/80 text-white p-3 rounded-full transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </motion.button>
+            
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-[#861FD2] text-white p-3 rounded-full hover:bg-[#66CC99] transition-colors"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
 
-              <div className="flex space-x-2 items-center">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-[#66CC99]' : 'bg-gray-600'
-                      }`}
-                  />
-                ))}
-              </div>
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-[#861FD2] text-white p-3 rounded-full hover:bg-[#66CC99] transition-colors"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
 
-              <motion.button
-                onClick={nextTestimonial}
-                className="bg-[#861FD2] hover:bg-[#861FD2]/80 text-white p-3 rounded-full transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ChevronRight className="h-6 w-6" />
-              </motion.button>
-            </div>
+          {/* Testimonial Indicators */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-[#66CC99]' : 'bg-gray-600'
+                  }`}
+              />
+            ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Model Certificates Section */}
+
       {/* Model Certificates Section */}
       <motion.section
         className="py-16 px-6"
