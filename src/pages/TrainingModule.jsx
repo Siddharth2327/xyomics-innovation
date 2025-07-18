@@ -6,16 +6,17 @@ import MicrobiologyImage from '../assets/images/ModuleImages/MicroOrganism.jpg';
 import MolecularBiologyImage from '../assets/images/ModuleImages/MolecularBiology.jpg';
 import ProteinBiologyImage from '../assets/images/ModuleImages/ProteinBiology.jpg';
 import MolecularDockingImage from '../assets/images/ModuleImages/MolecularDocking.jpg';
+import SampleCerti from "../assets/images/CertificateSample.jpg"
 const TrainingModule = () => {
-  useEffect(()=>{
-    scrollTo(0,0);//  Scroll to top on component mount
-  },[])
+  useEffect(() => {
+    scrollTo(0, 0);//  Scroll to top on component mount
+  }, [])
 
   // State to manage hovered and clicked cards
   const [hoveredCard, setHoveredCard] = useState(null);
   const [clickedCard, setClickedCard] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
+  const [certificateCard, setCertificateCard] = useState(false);
   // Sample training modules data
   const trainingModules = [
     {
@@ -79,29 +80,29 @@ const TrainingModule = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Dr.Debral",
-      role: "Ph.D. Scholar",
-      company: "SRM University",
-      rating: 5,
-      text: "The hands-on learning approach and cutting-edge research opportunities at XYOMICS have transformed my academic journey. I feel empowered to innovate and make a real-world impact.",
+      name: "Bindu Madhavi D",
+      role: "3ʳᵈ yr BioTech",
+      company: "REC college",
+      module: "Molecular Docking and Dynamics",
+      text: "The training period was very informative and I have learnt many things which is very useful for my future career. Since the session  was so interactive it helped me alot to overcome my fear. Atlast I like to thank you Nandha sir, for being a such inspiration and giving guidance to all of us",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 2,
-      name: "Dr. Sowmiya Thiyagarajan",
-      role: "Asst. Proffesor",
-      company: "SRIHER",
-      rating: 5,
-      text: "What sets XYOMICS apart is its dedication to pioneering research and interdisciplinary collaboration. As an Assistant Professor, I have the opportunity to mentor aspiring researchers and contribute to transformative projects that address critical societal challenges.",
+      name: "Hamirtha N",
+      role: "3ʳᵈ yr BioTech",
+      company: "REC college",
+      module: "Molecular Docking and Dynamics",
+      text: "Very approchable and informative. Really took good care of us, got clarity on our own project. ",
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
     },
     {
       id: 3,
-      name: "M Siddharth",
-      role: "Student",
+      name: "Guru Raaj V",
+      role: "3ʳᵈ yr BioTech",
       company: "REC college",
-      rating: 5,
-      text:"Being part of a student-centric institution that values experiential learning has given me the confidence to tackle real-world challenges and contribute meaningfully to society.",  
+      module: "Molecular Docking and Dynamics",
+      text: "It was very interactive, where teaching and learning was flawless. Unlike other training institutes, the interaction here is very much appreciable. ",
       avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face"
     }
   ];
@@ -117,6 +118,15 @@ const TrainingModule = () => {
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
+
+  const handleMouseEnter = () => {
+    setCertificateCard(true);
+  };
+
+  const handleMouseLeave = () => {
+    setCertificateCard(false);
+  };
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -136,14 +146,14 @@ const TrainingModule = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         className="relative py-20 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h1 
+          <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#861FD2] to-[#66CC99] bg-clip-text text-transparent"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -151,7 +161,7 @@ const TrainingModule = () => {
           >
             Master New Skills
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-8"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -163,20 +173,20 @@ const TrainingModule = () => {
       </motion.section>
 
       {/* Training Modules Grid */}
-      <motion.section 
+      <motion.section
         className="py-16 px-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold text-center mb-12 text-[#66CC99]"
             variants={cardVariants}
           >
             Our Training Modules
           </motion.h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trainingModules.map((module, index) => (
               <motion.div
@@ -192,13 +202,13 @@ const TrainingModule = () => {
                 <div className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
                   {/* Module Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={module.image} 
+                    <img
+                      src={module.image}
                       alt={module.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    
+
                     {/* Price Badge
                     <div className="absolute top-4 right-4 bg-[#861FD2] text-white px-3 py-1 rounded-full font-bold">
                       {module.price}
@@ -208,7 +218,7 @@ const TrainingModule = () => {
                   {/* Basic Info */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 
+                      <h3
                         className="text-xl font-bold text-[#66CC99] hover:text-white transition-colors cursor-pointer"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -219,7 +229,7 @@ const TrainingModule = () => {
                       </h3>
                       {/* add best seller, value for money tags here -- ask to them */}
                     </div>
-                    
+
                     <div className="flex items-center space-x-4 text-sm text-gray-400">
                       <div className="flex items-center space-x-1">
                         <Clock className="h-4 w-4" />
@@ -248,7 +258,7 @@ const TrainingModule = () => {
                       >
                         <h3 className="text-2xl font-bold mb-4 text-white">{module.name}</h3>
                         <p className="text-white/90 mb-6 text-sm leading-relaxed">{module.description}</p>
-                        
+
                         <div className="space-y-3">
                           <motion.button
                             className="w-full bg-white text-[#861FD2] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
@@ -259,7 +269,7 @@ const TrainingModule = () => {
                             <span>Register Now</span>
                             <ExternalLink className="h-4 w-4" />
                           </motion.button>
-                          
+
                           <motion.button
                             className="w-full border border-white/30 text-white font-semibold py-2 px-6 rounded-full hover:bg-white/10 transition-colors"
                             whileHover={{ scale: 1.05 }}
@@ -282,7 +292,7 @@ const TrainingModule = () => {
       </motion.section>
 
       {/* Flashy Register Button */}
-      <motion.section 
+      <motion.section
         className="py-16 px-6"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -291,7 +301,7 @@ const TrainingModule = () => {
         <div className="max-w-4xl mx-auto text-center">
           <motion.button
             className="relative bg-gradient-to-r from-[#861FD2] to-[#66CC99] text-white font-bold py-6 px-12 rounded-full text-2xl shadow-2xl overflow-hidden group"
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
               boxShadow: "0 20px 40px rgba(134, 31, 210, 0.4)"
             }}
@@ -322,21 +332,21 @@ const TrainingModule = () => {
       </motion.section>
 
       {/* Testimonials Carousel */}
-      <motion.section 
+      <motion.section
         className="py-16 px-6 bg-gray-900/30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <div className="max-w-4xl mx-auto">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold text-center mb-12 text-[#66CC99]"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
             What Our Students Say
           </motion.h2>
-          
+
           <div className="relative">
             <AnimatePresence mode="wait">
               <motion.div
@@ -348,7 +358,7 @@ const TrainingModule = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div className="flex items-center mb-6">
-                  <img 
+                  <img
                     src={testimonials[currentTestimonial].avatar}
                     alt={testimonials[currentTestimonial].name}
                     className="w-16 h-16 rounded-full mr-4 border-2 border-[#66CC99]"
@@ -359,18 +369,16 @@ const TrainingModule = () => {
                     <p className="text-gray-400 text-sm">{testimonials[currentTestimonial].company}</p>
                   </div>
                   <div className="ml-auto flex">
-                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                    ))}
+                    <p className="text-gray-400 text-sm">{testimonials[currentTestimonial].module}</p>
                   </div>
                 </div>
-                
+
                 <p className="text-gray-300 text-lg leading-relaxed italic">
                   "{testimonials[currentTestimonial].text}"
                 </p>
               </motion.div>
             </AnimatePresence>
-            
+
             {/* Navigation Buttons */}
             <div className="flex justify-center space-x-4 mt-8">
               <motion.button
@@ -381,19 +389,18 @@ const TrainingModule = () => {
               >
                 <ChevronLeft className="h-6 w-6" />
               </motion.button>
-              
+
               <div className="flex space-x-2 items-center">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentTestimonial ? 'bg-[#66CC99]' : 'bg-gray-600'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial ? 'bg-[#66CC99]' : 'bg-gray-600'
+                      }`}
                   />
                 ))}
               </div>
-              
+
               <motion.button
                 onClick={nextTestimonial}
                 className="bg-[#861FD2] hover:bg-[#861FD2]/80 text-white p-3 rounded-full transition-colors"
@@ -408,39 +415,60 @@ const TrainingModule = () => {
       </motion.section>
 
       {/* Model Certificates Section */}
-      <motion.section 
+      <motion.section
         className="py-16 px-6"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.7 }}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold mb-12 text-[#66CC99]"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
             Industry-Recognized Certificates
           </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((cert, index) => (
-              <motion.div
+
+          <div className="flex justify-center">
+            {[1].map((cert, index) => (
+              <div
                 key={cert}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 className="bg-gradient-to-br from-[#861FD2]/20 to-[#66CC99]/20 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 group hover:border-[#66CC99]/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
               >
-                <div className="bg-gradient-to-br from-[#861FD2] to-[#66CC99] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Award className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">Certificate of Excellence</h3>
-                <p className="text-gray-400">
-                  Get internationally recognized certificates upon successful completion of our training modules.
-                </p>
-              </motion.div>
+                <AnimatePresence mode="wait">
+                  {!certificateCard && (
+                    <motion.div
+                      key="default"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }}
+                      exit={{ opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } }}
+                    >
+                      <div className="bg-gradient-to-br from-[#861FD2] to-[#66CC99] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <Award className="h-10 w-10 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-4">Certificate of Excellence</h3>
+                      <p className="text-gray-400">
+                        Get internationally recognized certificates upon successful completion of our training modules.
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {certificateCard && (
+                    <motion.img
+                      key="certificate"
+                      src={SampleCerti}
+                      alt="Sample Certificate"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }}
+                      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } }}
+                      className="mt-4 rounded-lg shadow-lg w-full transition-all duration-300"
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
         </div>

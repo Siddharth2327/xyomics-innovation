@@ -1,75 +1,83 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { Suspense, lazy, useEffect } from 'react';
 import Footer from './components/Footer';
-// lazy load for better performance
-const Home = lazy(()=> import("./pages/Home"));
-const AboutDetailed = lazy(()=> import("./pages/AboutDetailed"));
-const TrainingModule = lazy(()=> import("./pages/TrainingModule"));
-const Careers = lazy(()=> import("./pages/Careers"));
+import { Suspense, lazy } from 'react';
+import './App.css';
+
+// lazy pages
+const Home = lazy(() => import("./pages/Home"));
+const AboutDetailed = lazy(() => import("./pages/AboutDetailed"));
+const TrainingModule = lazy(() => import("./pages/TrainingModule"));
+const Careers = lazy(() => import("./pages/Careers"));
 const Contact = lazy(() => import("./pages/ContactDetailed"));
-const Service = lazy(()=>import("./pages/Services"));
-const NBSPanel = lazy(()=>import("./pages/servicesPages/NBSServicePage"))
-
-// Setting Dynamic titles
-function usePageTitle(title){
-  useEffect(()=>{
-    document.title=title;
-  },[title]); // whenever the title changes
-}
-
-function HomePage(){
-  usePageTitle("Home | Xyomics");
-  return <Home/>;
-}
-
-function AboutPage(){
-  usePageTitle("About | Xyomics");
-  return <AboutDetailed/>;
-}
-
-function ServicePage(){
-  usePageTitle("Services | Xyomics")
-  return <Service/>
-}
-
-function NBSPanelPage(){
-  usePageTitle("NBS Panels | Xyomics")
-  return <NBSPanel/>
-}
-
-function TrainingModulePage(){
-  usePageTitle("Training Modules | Xyomics")
-  return <TrainingModule/>;
-}
-
-function CareersPage(){
-  usePageTitle("Careers | Xyomics");
-  return <Careers/>;
-}
-
-function ContactPage(){
-  usePageTitle("Contact | Xyomics");
-  return <Contact/>;
-}
+const Service = lazy(() => import("./pages/Services"));
+const NBSPanel = lazy(() => import("./pages/servicesPages/NBSServicePage"));
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    
+    // Start loading main content after 1 sec
+    const preloadTimer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 1000);
+
+    const timer = setTimeout(() => {
+      setIsTransitioning(true);
+
+      // remove the video from the DOM after 0.5 secs of transition happened or else it will be keep on playing on the background since the opacity is set to 0 we cant see it 
+      setTimeout(() => {
+        setShowIntro(false);
+      }, 500);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(preloadTimer);
+    };
+  }, []);
+
   return (
-    <Router>
-      <Navbar />
-      <main >
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/about" element={<AboutPage/>} />
-        <Route path="/service" element={<ServicePage/>}/>
-        <Route path= "/service/NBS-Panels" element={<NBSPanelPage/>}/>
-        <Route path="/training-modules" element={<TrainingModulePage/>}/>
-        <Route path="/careers" element={<CareersPage/>} />
-        <Route path="/contact" element={<ContactPage/>}/>
-      </Routes>
-      </main>
-      <Footer/>
-    </Router>
+    <>
+      {showIntro && (
+        <div className={`intro-container ${isTransitioning ? 'fade-out' : ''}`}>
+          <video
+            autoPlay
+            muted
+            playsInline
+            className="intro-video"
+          >
+            <source src="/assets/videos/IntroVideo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
+
+      <Router>
+        <Navbar />
+        <main>
+          {contentLoaded && (
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutDetailed />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/service/NBS-Panels" element={<NBSPanel />} />
+              <Route path="/training-modules" element={<TrainingModule />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          )}
+        </main>
+        <Footer />
+      </Router>
+
+
+    </>
   );
 }
 
