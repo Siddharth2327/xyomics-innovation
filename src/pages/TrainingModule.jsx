@@ -415,6 +415,7 @@ const TrainingModule = () => {
       </motion.section>
 
       {/* Model Certificates Section */}
+      {/* Model Certificates Section */}
       <motion.section
         className="py-16 px-6"
         initial={{ opacity: 0, y: 50 }}
@@ -436,7 +437,7 @@ const TrainingModule = () => {
                 key={cert}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="bg-gradient-to-br from-[#861FD2]/20 to-[#66CC99]/20 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 group hover:border-[#66CC99]/50 transition-all duration-300"
+                className="w-[320px] h-[400px] bg-gradient-to-br from-[#861FD2]/20 to-[#66CC99]/20 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 group hover:border-[#66CC99]/50 transition-all duration-300 flex items-center justify-center"
               >
                 <AnimatePresence mode="wait">
                   {!certificateCard && (
@@ -445,6 +446,7 @@ const TrainingModule = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }}
                       exit={{ opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } }}
+                      className="text-center"
                     >
                       <div className="bg-gradient-to-br from-[#861FD2] to-[#66CC99] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                         <Award className="h-10 w-10 text-white" />
@@ -464,7 +466,7 @@ const TrainingModule = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }}
                       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.3, ease: "easeIn" } }}
-                      className="mt-4 rounded-lg shadow-lg w-full transition-all duration-300"
+                      className="w-full h-full object-contain rounded-xl shadow-lg"
                     />
                   )}
                 </AnimatePresence>
@@ -473,6 +475,7 @@ const TrainingModule = () => {
           </div>
         </div>
       </motion.section>
+
     </div>
   );
 };

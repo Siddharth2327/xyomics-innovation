@@ -11,7 +11,8 @@ import {
   Instagram,
   Twitter,
   Linkedin,
-  ArrowRight
+  ArrowRight,
+  Youtube
 } from 'lucide-react';
 
 const ContactPage = () => {
@@ -93,21 +94,27 @@ const ContactPage = () => {
     {
       icon: Facebook,
       name: "Facebook",
-      link: "https://www.facebook.com/profile.php?id=61575095124350",
-      color: "hover:bg-[#861FD2]"
+      link: "https://www.facebook.com/profile.php?id=61578252607829",
+      color: "hover:bg-[#1877F2]"
     },
     {
       icon: Instagram,
       name: "Instagram",
       link: "https://www.instagram.com/xyomics_official_/",
-      color: "hover:bg-[#66CC99]"
+      color: "hover:bg-[#E1306C]"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
       link: "https://www.linkedin.com/company/xyomics-innovation-india-private-limited/about/?viewAsMember=true",
-      color: "hover:bg-[#861FD2]"
-    }
+      color: "hover:bg-[#0077B5]"
+    },
+    {
+      icon: Youtube,
+      name: "Youtube",
+      link: "https://www.youtube.com/@XYOMICSInnovations",
+      color: "hover:bg-[#FF0000]"
+    },
   ];
 
   return (
