@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+import PageTitle from '../components/PageTitle';
 
 const Careers = () => {
   useEffect(()=>{
     scrollTo(0, 0); // Scroll to top on component mount 
   },[]);
   return (
+    <>
+    <PageTitle title= "Xyomics Innovation | Careers"/>
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6">
       <motion.div 
         className="max-w-4xl mx-auto text-center"
@@ -55,6 +58,7 @@ const Careers = () => {
         </motion.p>
       </motion.div>
     </div>
+    </>
   );
 };
 

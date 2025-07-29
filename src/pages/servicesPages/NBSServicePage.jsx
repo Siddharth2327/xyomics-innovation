@@ -162,6 +162,8 @@ const NBSServicePage = () => {
     };
 
     return (
+        <>
+        <PageTitle title="Xyomics Innovation | NBS"/>
         <div className="min-h-screen bg-black text-white bg-black">
             {/* Navigation Header */}
             {/* <div className=" bg-black/95 backdrop-blur-sm ">
@@ -511,6 +513,7 @@ const NBSServicePage = () => {
                 </div>
             </motion.section>
         </div>
+        </>
     );
 };
 

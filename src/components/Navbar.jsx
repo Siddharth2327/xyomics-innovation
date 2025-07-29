@@ -176,20 +176,24 @@ const Navbar = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-black/50 backdrop-blur-[10px] rounded-lg shadow-xl overflow-hidden"
                   >
-                    <Link
-                      to="/service"
+                    <a
+                      href="/service"
+                      target='blank'
+                      rel = "noopener noreferrer"
                       onClick={handleSectionNavigation}
                       className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
                     >
                       Services
-                    </Link>
-                    <Link
-                      to="/training-modules"
+                    </a>
+                    <a
+                      href="/training-modules"
+                      target='blank'
+                      rel = "noopener noreferrer"
                       onClick={handleSectionNavigation}
                       className="block px-4 py-3 font-medium text-white hover:bg-gradient-to-r hover:from-[#861FD2]/20 hover:to-[#66CC99]/20 transition-all duration-200 border-b border-gray-700 last:border-b-0"
                     >
                       Training Modules
-                    </Link>
+                    </a>
                     <Link
                       to="/careers"
                       onClick={handleSectionNavigation}

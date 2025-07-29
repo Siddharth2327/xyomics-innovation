@@ -7,6 +7,7 @@ import MolecularBiologyImage from '../assets/images/ModuleImages/MolecularBiolog
 import ProteinBiologyImage from '../assets/images/ModuleImages/ProteinBiology.jpg';
 import MolecularDockingImage from '../assets/images/ModuleImages/MolecularDocking.jpg';
 import SampleCerti from "../assets/images/CertificateSample.jpg"
+import PageTitle from '../components/PageTitle';
 const TrainingModule = () => {
   useEffect(() => {
     scrollTo(0, 0);//  Scroll to top on component mount
@@ -84,7 +85,7 @@ const TrainingModule = () => {
       role: "3ʳᵈ yr BioTech",
       company: "REC college",
       module: "Molecular Docking and Dynamics",
-      text: "The training period was very informative and I have learnt many things which is very useful for my future career. Since the session  was so interactive it helped me alot to overcome my fear. Atlast I like to thank you Nandha sir, for being a such inspiration and giving guidance to all of us",
+      text: "The training period was very informative and I have learnt many things which is very useful for my future career. Since the session  was so interactive it helped me a lot to overcome my fear. Atlast I like to thank you Nandha sir, for being a such inspiration and giving guidance to all of us",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     {
@@ -144,6 +145,8 @@ const TrainingModule = () => {
   };
 
   return (
+    <>
+    <PageTitle title="Xyomics Innovation | Training Module"/>
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <motion.section
@@ -473,6 +476,7 @@ const TrainingModule = () => {
       </motion.section>
 
     </div>
+    </>
   );
 };
 

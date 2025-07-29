@@ -21,6 +21,7 @@ import {
     Database
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import PageTitle from '../components/PageTitle';
 
 const ServicesPage = () => {
     useEffect(() => {
@@ -154,6 +155,8 @@ const ServicesPage = () => {
     };
 
     return (
+        <>
+        <PageTitle title="Xyomics Innovation | Services"/>
         <div className="min-h-screen bg-black text-white">
             {/* Hero Section */}
             <motion.section
@@ -423,6 +426,7 @@ const ServicesPage = () => {
                 </div>
             </motion.section>
         </div>
+        </>
     );
 };
 

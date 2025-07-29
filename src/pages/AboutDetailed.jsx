@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
+import PageTitle from "../components/PageTitle";
 
 
 const AboutDetailed = () => {
@@ -40,6 +41,8 @@ const AboutDetailed = () => {
   };
 
   return (
+    <>
+    <PageTitle title="Xyomics Innovation | About"/>
     <div ref={sectionRef} className="pt-24 min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
     
@@ -201,6 +204,7 @@ const AboutDetailed = () => {
         </motion.section>
       </div>
     </div>
+    </>
   );
 };
 

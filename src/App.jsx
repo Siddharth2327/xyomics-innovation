@@ -15,11 +15,19 @@ const Service = lazy(() => import("./pages/Services"));
 const NBSPanel = lazy(() => import("./pages/servicesPages/NBSServicePage"));
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => {
+    // Check if intro has been shown in this session
+    const hasSeenIntro = sessionStorage.getItem('introShown');
+    return !hasSeenIntro;
+  });
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [contentLoaded, setContentLoaded] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(!showIntro); // Load content immediately if no intro
 
   useEffect(() => {
+    if (!showIntro) return; // Don't run if intro shouldn't show
+
+    // Mark intro as shown in this session
+    sessionStorage.setItem('introShown', 'true');
     
     // Start loading main content after 1 sec
     const preloadTimer = setTimeout(() => {
@@ -29,7 +37,7 @@ function App() {
     const timer = setTimeout(() => {
       setIsTransitioning(true);
 
-      // remove the video from the DOM after 0.5 secs of transition happened or else it will be keep on playing on the background since the opacity is set to 0 we cant see it 
+      // Remove the video from the DOM after 0.5 secs of transition
       setTimeout(() => {
         setShowIntro(false);
       }, 500);
@@ -39,7 +47,7 @@ function App() {
       clearTimeout(timer);
       clearTimeout(preloadTimer);
     };
-  }, []);
+  }, [showIntro]);
 
   return (
     <>
@@ -56,7 +64,6 @@ function App() {
           </video>
         </div>
       )}
-
 
       <Router>
         <Navbar />
@@ -75,8 +82,6 @@ function App() {
         </main>
         <Footer />
       </Router>
-
-
     </>
   );
 }

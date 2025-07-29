@@ -14,6 +14,7 @@ import {
   ArrowRight,
   Youtube
 } from 'lucide-react';
+import PageTitle from '../components/PageTitle';
 
 const ContactPage = () => {
 
@@ -118,6 +119,9 @@ const ContactPage = () => {
   ];
 
   return (
+    <>
+    <PageTitle title="Xyomics Innovation | Contact"/>
+    
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 md:px-16 overflow-hidden">
@@ -446,6 +450,7 @@ const ContactPage = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 
